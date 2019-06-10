@@ -159,11 +159,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EmulatorModel.h" />
     <ClInclude Include="OpenGLDisplay.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Emulator.cpp" />
+    <ClCompile Include="EmulatorModel.cpp" />
     <ClCompile Include="OpenGLDisplay.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

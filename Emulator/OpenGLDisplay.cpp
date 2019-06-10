@@ -2,7 +2,6 @@
 #include "OpenGLDisplay.h"
 #include <vector>
 
-
 int displayHeight;
 int displayWidth;
 std::vector< unsigned char > display;
