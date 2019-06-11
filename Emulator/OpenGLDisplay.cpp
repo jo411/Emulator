@@ -45,6 +45,14 @@ void OpenGLDisplay::bitmapToColorBuffer(const std::vector<int>& screenBuffer)
 
 void OpenGLDisplay::drawScreen(const std::vector<int>& screenBuffer)
 {
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+	float scaleFactor = 1.0f;
+	
+	//glScalef(-scaleFactor, scaleFactor, -scaleFactor);	
+	//glTranslatef(.966f, -.93f, 0.0f);
+	glMatrixMode(GL_MODELVIEW);
+
 	bitmapToColorBuffer(screenBuffer);
 
 	GLuint textureID;
@@ -67,12 +75,27 @@ void OpenGLDisplay::drawScreen(const std::vector<int>& screenBuffer)
 	glEnable(GL_TEXTURE_2D);
 
 
-	glBegin(GL_QUADS);
+	glBegin(GL_QUADS);//vertecies defined in counter clock wise order
 	glColor3f(1.0f, 1.0f, 1.0f);
-	glTexCoord2f(-1, -1); glVertex2f(-1, -1);
-	glTexCoord2f(-1, 1); glVertex2f(-1, 1);
-	glTexCoord2f(1, 1); glVertex2f(1, 1);
-	glTexCoord2f(1, -1); glVertex2f(1, -1);
+
+	glTexCoord2f(0, 0); glVertex2f(-1, 1);
+	glTexCoord2f(0, 1); glVertex2f(-1, -1);
+	glTexCoord2f(1, 1); glVertex2f(1, -1);
+	glTexCoord2f(1, 0); glVertex2f(1, 1);
+	
+
+	
+	
+	
+	
+
+
+
+	//glTexCoord2f(-1, -1); glVertex2f(-1, -1);
+	//glTexCoord2f(-1, 1); glVertex2f(-1, 1);
+	//glTexCoord2f(1, 1); glVertex2f(1, 1);
+	//glTexCoord2f(1, -1); glVertex2f(1, -1);
+
 
 	glEnd();
 

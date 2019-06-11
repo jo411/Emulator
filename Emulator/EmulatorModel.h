@@ -3,18 +3,27 @@
 class EmulatorModel
 {
 public:
-	int emulatedScreenWidth = 64;
-	int emulatedScreenHeight = 32;
+	int screenWidth = 64;
+	int screenHeight = 32;
 	bool initialized = false;
 
 	EmulatorModel(std::string ROMPath);
 	~EmulatorModel();
+	
+	bool dirtyScreen = true;
+
+	void tickTimers();
+	void clearScreen();
 
 	void tick();
-	void generateScreenBuffer();
+	void generateDebugScreenBuffer(int val);
 	std::vector<int> getScreenBuffer();
 	void initializeRam();
-	bool loadROMIntoRAM();
+	bool loadRomIntoRam();
+	bool loadFontIntoRam();
+	void setPixel(int x, int y, int val, bool useXor);
+	short getCharFontAddr(unsigned char in);
+	void writeSpriteToScreenBuffer(int x, int y, short addr);
 	void writeRam();
 };
 
